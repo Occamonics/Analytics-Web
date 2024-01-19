@@ -1,0 +1,730 @@
+[
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.clearReview.access"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.clearReview.attachments"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.clearReview.notifications"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.clearReview.recording"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.endOfYear.anonymousFeedback"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.endOfYear.ratingNewJoiners"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.endOfYear.ratingWeight"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.endOfYear.values"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.feedback.proactively"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.feedback.request"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.goal.manager.cascadeTeam"
+  },
+  {
+    "skill": "FAQsDemo",
+    "intent": "faq.ans.goals.indirectReport"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "buyAndSell"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "cancelLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "carryOver"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "juryService"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "leaveBalanceWrong"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "maternityLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "militaryService"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "paidLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "paternityLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "sabbaticalLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "sickLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "specialLeave"
+  },
+  {
+    "skill": "Sch_Absence_Policies",
+    "intent": "statutoryHolidays"
+  },
+  {
+    "skill": "Sch_Approvals",
+    "intent": "Approval Actions"
+  },
+  {
+    "skill": "Sch_Approvals",
+    "intent": "Task Submission Status"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "benefitOptionUnavailable"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "benefitsOffered"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "changeMyBenefits"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "dependents"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "healthAssessment"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "healthInsuranceProvider"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "optionsSelectionPeriod"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "pensionTransferring"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "pensions"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "pensionsForLeavers"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "sabbatical"
+  },
+  {
+    "skill": "Sch_Benefits",
+    "intent": "viewMyBenefits"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "absence.create.self"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "expenses.deepLink"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "feedback.negative"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "feedback.positive"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "feedback.suggestion"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "impersonate.testUser"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "oda.howToMove"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "payslip.view.self"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "personNumber.view.self"
+  },
+  {
+    "skill": "Sch_Custom",
+    "intent": "timeSheet.manage.self"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "P60"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "POE"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "deferredQueries"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "diversityProfile"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "dutyOfCare"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "finance.helpdesk"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "finance.issue"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "generalEnquiries"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "helpdesk"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "hrPolicies"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "internalVacancies"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "overtime"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "password"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "performance"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "performanceFeedback"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "performanceGoals"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "referralSchema"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "resign"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "sendsafely"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "tax"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "techlink"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "travelPolicy"
+  },
+  {
+    "skill": "Sch_HR_Policies",
+    "intent": "whistleblow"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "absenceForDuration.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "absenceFuture.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "absencePast.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "assignment.add.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "assignment.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "assignment.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "assignment.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "contactInfo.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "contactInfo.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "department.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "department.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "directReports.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "email.manage.other"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "email.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "emergencyContacts.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "emergencyContacts.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "emergencyContacts.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "emergencyContacts.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "hire.worker"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "hiredate.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "hiredate.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "hiredate.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "hiredate.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "job.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "job.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "job.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "location.manage.other"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "location.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "manager.actions"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "manager.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "manager.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "manager.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "nickname.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "nickname.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "nickname.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "onboarding.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "paymentMethod.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "payslip.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "personalInfo.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "phone.manage.other"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "phone.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "phone.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "photo.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "photo.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "photo.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "representatives.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "representatives.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "salary.manage.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "salary.manage.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "salary.view.self"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "taxDocuments.view.others"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "terminate.worker"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "transfer.worker"
+  },
+  {
+    "skill": "Sch_HcmV2",
+    "intent": "workingHours.manage.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "absenceBalance.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "absenceBalance.view.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "absenceForDuration.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "absenceFuture.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "absencePast.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "assignment.view.other"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "contactInfo.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "contactInfo.view.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "department.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "directReports.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "directReports.view.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "email.manage.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "email.view.other"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "job.view.other"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "location.manage.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "location.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "manager.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "phone.view.other"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "photo.manage.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "representatives.view.others"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "representatives.view.self"
+  },
+  {
+    "skill": "Sch_Hcm_Overrides",
+    "intent": "salary.view.others"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "careerCoaches"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "cfaAndFitchLearning"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "examReSits"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "executiveAndAdvancedEducation"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "mandatoryLearning.others"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "mandatoryLearning.self"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "membershipAndSubscriptions"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "mentoring"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "professionalQualificationSponsorship"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "studyLeave"
+  },
+  {
+    "skill": "Sch_Skills_and_Qualifications",
+    "intent": "teamDevelopmentDays"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "authenticationSpark"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "bookCourse"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "cdp"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "howToUseSpark"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "informationContact"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "managementCourses"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "payment"
+  },
+  {
+    "skill": "Sch_Spark",
+    "intent": "pendingRequestSpark"
+  },
+  {
+    "skill": "Sch_Welfare",
+    "intent": "employeeAssistanceProgram"
+  },
+  {
+    "skill": "Sch_Welfare",
+    "intent": "eyeCareVoucher"
+  },
+  {
+    "skill": "Sch_Welfare",
+    "intent": "mentalHealth"
+  },
+  {
+    "skill": "Sch_Welfare",
+    "intent": "onsiteDoctor"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "SMALLTALK_RichMessage"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.date"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.goodbye"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.howAreYou"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.human"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.jokes"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.meaningOfLife"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.time"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.weather"
+  },
+  {
+    "skill": "SmallTalk",
+    "intent": "answer.whatsYourName"
+  },
+  {
+    "skill": "UnresolvedHandler",
+    "intent": "unresolvedIntent"
+  }
+]
