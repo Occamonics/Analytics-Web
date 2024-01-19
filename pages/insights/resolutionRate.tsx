@@ -1,9 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Breadcrumb} from "antd";
 import {Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, RadialLinearScale, Filler, PointElement, LineElement} from 'chart.js';
-import {Chart, Doughnut} from 'react-chartjs-2';
-import _default from "chart.js/dist/plugins/plugin.filler";
-import beforeDraw = _default.beforeDraw;
+import {Chart} from 'react-chartjs-2';
 
 ChartJS.register(
     CategoryScale,
