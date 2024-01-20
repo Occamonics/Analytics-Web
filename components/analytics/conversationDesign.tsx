@@ -109,11 +109,11 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
         },
         {
             title: "Issue Type",
-            key: "issue",
-            dataIndex: "issue",
+            key: "issue_type",
+            dataIndex: "issue_type",
             render: (value, record) => <Select
                 showSearch
-                placeholder="issue"
+                placeholder="issue_type"
                 filterOption={filterOption}
                 options={Object.entries(ISSUE_TYPE).map(([key, value]) => ({
                     label: value,
