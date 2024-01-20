@@ -22,7 +22,7 @@ const Analytics = () => {
 
     const updateData = (indexKey: number, key: string, newValue: any) => {
         const updatedData = [...rawDataConversations];
-        const itemIndex = updatedData.findIndex(item => item.index === indexKey);
+        const itemIndex = updatedData.findIndex(item => item.key === indexKey);
         if (itemIndex !== -1) {
             updatedData[itemIndex][key] = newValue;
         }

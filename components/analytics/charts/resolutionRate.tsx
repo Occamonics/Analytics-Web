@@ -24,7 +24,6 @@ const ResolutionRate = ({resultPercentages}: propType) => {
         // @ts-ignore
         percentages.push(resultPercentages[key]);
     }
-    console.log(labels)
     const data = {
         labels,
         datasets: [
