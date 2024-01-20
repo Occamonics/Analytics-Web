@@ -98,7 +98,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
                     label: value,
                     value: value,
                 }))}
-                onChange={(value) => updateHandler(record.index, "result", value)}
+                onChange={(value) => updateHandler(record.key, "result", value)}
             />,
             filters: Object.entries(RESULT).map(([key, value]) => ({
                 text: value,
@@ -120,7 +120,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
                     value: value,
                 }))}
                 onChange={(value) => {
-                    updateHandler(record.index, "issue_type", value)
+                    updateHandler(record.key, "issue_type", value)
                 }}
                 disabled={record.result == RESULT.SATISFACTORY}
                 value={value}
@@ -139,7 +139,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
                         placeholder={"select user intent"}
                         value={value}
                         onChange={(value) => {
-                            updateHandler(record.index, "user_intent", value)
+                            updateHandler(record.key, "user_intent", value)
                         }}
                         options={intents.map((el) => {
                             return {
@@ -162,7 +162,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
             render: (value, record) => {
                 return <Input
                     value={value}
-                    onChange={(e) => updateHandler(record.index, "notes", e.target.value)}
+                    onChange={(e) => updateHandler(record.key, "notes", e.target.value)}
                 />
             }
         },

@@ -23,6 +23,7 @@ const Analytics = () => {
     const updateData = (indexKey: number, key: string, newValue: any) => {
         const updatedData = [...rawDataConversations];
         const itemIndex = updatedData.findIndex(item => item.key === indexKey);
+        // console.log(updatedData[itemIndex]);
         if (itemIndex !== -1) {
             updatedData[itemIndex][key] = newValue;
         }
@@ -89,7 +90,9 @@ const Analytics = () => {
         reader.onload = (e: any) => {
             try {
                 const parsedData = JSON.parse(e.target.result);
-                setRawDataConversations(parsedData);
+                setRawDataConversations(parsedData.map((e: any, i: any) => {
+                    return {...e, key: i}
+                }));
                 message.success('File uploaded successfully!');
             } catch (error) {
                 message.error('Error parsing JSON. Please upload a valid JSON file.');
@@ -152,9 +155,7 @@ const Analytics = () => {
                     {
                         key: "conversation_design",
                         label: "",
-                        children: <ConversationDesign analysis={rawDataConversations.map((e: any, i: any) => {
-                            return {...e, key: i}
-                        })} updateHandler={updateData}/>,
+                        children: <ConversationDesign analysis={rawDataConversations} updateHandler={updateData}/>,
                         icon: <AntDesignOutlined/>,
                     },
                     {
