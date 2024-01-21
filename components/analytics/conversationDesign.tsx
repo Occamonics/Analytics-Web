@@ -105,7 +105,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
                 value: value,
             })),
             filterSearch: true,
-            onFilter: (value, record) => record.result.includes(value as string),
+            onFilter: (value, record) => record.result && record.result.includes(value as string),
         },
         {
             title: "Issue Type",

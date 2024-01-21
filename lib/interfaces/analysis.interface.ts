@@ -13,7 +13,7 @@ export enum RESULT {
 }
 
 export enum ISSUE_TYPE {
-    USER_UTTERANCE = "User Utterance",
+    // USER_UTTERANCE = "User Utterance",
     RESPONSE_TEXT = "Response Text",
     INTENT_MAPPING = "Intent Mapping",
     FOLLOW_UP = "Follow Up",
