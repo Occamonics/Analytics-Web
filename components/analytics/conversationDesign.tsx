@@ -3,10 +3,11 @@ import {Input, Select, Table} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import ConversationTimeLine from "./conversationTimeLine";
 import UserUtteranceDisplay from "./userUtteranceDisplay";
-import {IAnalysis, ISSUE_TYPE, RESULT} from "../../lib/interfaces/analysis.interface";
+import {IAnalysis, ISSUE_TYPE, RESULT, STATUS} from "../../lib/interfaces/analysis.interface";
 import {formatUnixTimestamp} from "../../lib/helpers";
 
 import intents from "../../lib/data/intents.json";
+const {TextArea}= Input;
 
 type propType = {
     analysis: IAnalysis[];
@@ -27,7 +28,8 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
                 return {text: e.key.toString(), value: e.key}
             }),
             filterSearch: true,
-            onFilter: (value, record) => record.USER_ID == value,
+            onFilter: (value, record) => record.key == value,
+            // fixed: true
         },
 
         {
@@ -43,6 +45,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
             }),
             filterSearch: true,
             onFilter: (value, record) => record.USER_ID.includes(value as string),
+            width:150
         },
         {
             title: "User Utterance",
@@ -113,7 +116,7 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
             dataIndex: "issue_type",
             render: (value, record) => <Select
                 showSearch
-                placeholder="issue_type"
+                placeholder="issue type"
                 filterOption={filterOption}
                 options={Object.entries(ISSUE_TYPE).map(([key, value]) => ({
                     label: value,
@@ -154,17 +157,46 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
             title: "Associated Skill",
             key: "associated_skill",
             dataIndex: "associated_skill",
+            width:200
+        },
+        {
+            title: "Status",
+            key: "status",
+            dataIndex: "status",
+            render: (value, record) => <Select
+                showSearch
+                defaultValue={STATUS.IN_PROGRESS}
+                placeholder="status"
+                filterOption={filterOption}
+                options={Object.entries(STATUS).map(([key, value]) => ({
+                    label: value,
+                    value: value,
+                }))}
+                onChange={(value) => {
+                    updateHandler(record.key, "status", value)
+                }}
+                disabled={record.result == RESULT.SATISFACTORY}
+                value={value}
+            />,
+            filters: Object.entries(STATUS).map(([key, value]) => ({
+                text: value,
+                value: value,
+            })),
+            filterSearch: true,
+            onFilter: (value, record) => record.status && record.status.includes(value as string),
         },
         {
             title: "Notes",
             key: "notes",
             dataIndex: "notes",
             render: (value, record) => {
-                return <Input
+                return <TextArea
+                    rows={1}
                     value={value}
                     onChange={(e) => updateHandler(record.key, "notes", e.target.value)}
                 />
-            }
+            },
+            fixed: "right"
         },
         // {
         //     title: "First Visit",
@@ -187,9 +219,20 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
 
     return (
         <Table
+            rowClassName={(record, index) => {
+                if(record.status && record.result && record.result !== RESULT.SATISFACTORY){
+                    if(record.status === STATUS.WONT_FIX)
+                        return 'red-row'
+                    if(record.status === STATUS.COMPLETED)
+                        return 'green-row'
+                    if(record.status === STATUS.IN_PROGRESS)
+                        return 'yellow-row'
+                }
+                return ""
+            }}
             columns={columns}
             dataSource={analysis}
-            scroll={{x: 'max-content'}}
+            scroll={{x: 'max-content', y:'max-content', scrollToFirstRowOnChange: true}}
             expandable={{
                 expandedRowRender: (record) => <ConversationTimeLine conversation={record.conversation}/>
             }}

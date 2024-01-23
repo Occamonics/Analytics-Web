@@ -10,7 +10,7 @@ import {
 import References from "../../components/analytics/references";
 import {getAllConversations, getListOfIntents} from "../../lib/api/conversations.api";
 import {Router} from "next/router";
-import {RESULT} from "../../lib/interfaces/analysis.interface";
+import {ISSUE_TYPE, RESULT, STATUS} from "../../lib/interfaces/analysis.interface";
 
 import intents from "../../lib/data/intents.json";
 import ResolutionRate from "../../components/analytics/charts/resolutionRate";
@@ -28,6 +28,8 @@ const Analytics = () => {
             updatedData[itemIndex][key] = newValue;
         }
         if (updatedData[itemIndex].result === RESULT.SATISFACTORY) {
+            updatedData[itemIndex].status = STATUS.IN_PROGRESS
+            updatedData[itemIndex].issue_type = null
             updatedData[itemIndex].user_intent = updatedData[itemIndex].INTENT
         }
         if (updatedData[itemIndex].INTENT === updatedData[itemIndex].user_intent) {

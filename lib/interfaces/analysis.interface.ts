@@ -1,8 +1,6 @@
 export enum STATUS {
-    CURRENT = "Current",
-    CURRENT_ADD_UTTERANCE = "Current - Add Utterance",
+    COMPLETED = "Completed",
     IN_PROGRESS = "In Progress",
-    TO_DO = "To Do",
     WONT_FIX = "Won't Fix"
 }
 
@@ -39,7 +37,7 @@ export interface IAnalysis {
     user_intent: string;
     associated_skill: string;
     status: STATUS;
-    issue_type: ISSUE_TYPE;
+    issue_type: ISSUE_TYPE | null;
 
     notes: string;
     DATE: string;
