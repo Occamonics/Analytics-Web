@@ -27,6 +27,9 @@ const Analytics = () => {
         if (itemIndex !== -1) {
             updatedData[itemIndex][key] = newValue;
         }
+        if(!updatedData[itemIndex].status){
+            updatedData[itemIndex].status = STATUS.IN_PROGRESS
+        }
         if (updatedData[itemIndex].result === RESULT.SATISFACTORY) {
             updatedData[itemIndex].status = STATUS.IN_PROGRESS
             updatedData[itemIndex].issue_type = null
