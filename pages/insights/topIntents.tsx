@@ -36,7 +36,7 @@ const DailySessions = () => {
             } else
                 setData({});
         }
-        fetchData();
+        // fetchData();
     }, []);
 
     return (

@@ -9,3 +9,22 @@
 .yellow-row {
     background-color: #FFF2CC;
 }
+
+
+/* YourComponent.css */
+
+.excel-export-button {
+    background: linear-gradient(to bottom, #4caf50, #45a049); /* Gradient background */
+    border-color: #4caf50;
+    color: #fff; /* White text for contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    /* Add any other styling as needed */
+}
+
+.excel-export-button:hover {
+    background: linear-gradient(to bottom, #45a049, #4caf50); /* Darker gradient on hover */
+    border-color: #45a049;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+    /* Add any other hover effects as needed */
+}

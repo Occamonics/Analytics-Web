@@ -12,12 +12,13 @@ const {TextArea}= Input;
 type propType = {
     analysis: IAnalysis[];
     updateHandler: any;
+    updateFilteredConversation: any;
 }
 
 
 const filterOption = (input: string, option?: { label: string; value: string }) =>
     (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
-const ConversationDesign = ({analysis, updateHandler}: propType) => {
+const ConversationDesign = ({analysis, updateHandler, updateFilteredConversation}: propType) => {
 
     const columns: ColumnsType<IAnalysis> = [
         {
@@ -235,6 +236,10 @@ const ConversationDesign = ({analysis, updateHandler}: propType) => {
             scroll={{x: 'max-content', y:'max-content', scrollToFirstRowOnChange: true}}
             expandable={{
                 expandedRowRender: (record) => <ConversationTimeLine conversation={record.conversation}/>
+            }}
+            onChange={(pagination, filters, sorter, extra) => {
+                const {currentDataSource} = extra;
+                updateFilteredConversation(currentDataSource);
             }}
         />
     );

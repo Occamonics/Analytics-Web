@@ -1,24 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {Breadcrumb, Button, Divider, message, Space, Tabs, Upload} from "antd";
+import {Breadcrumb, Button, Col, Divider, Flex, message, Row, Space, Tabs, Upload} from "antd";
 import ConversationDesign from "../../components/analytics/conversationDesign";
 import {
     AntDesignOutlined,
-    DotChartOutlined, DownloadOutlined,
+    DotChartOutlined,
+    DownloadOutlined,
     FileSearchOutlined,
     UploadOutlined
 } from "@ant-design/icons";
 import References from "../../components/analytics/references";
 import {getAllConversations, getListOfIntents} from "../../lib/api/conversations.api";
 import {Router} from "next/router";
-import {ISSUE_TYPE, RESULT, STATUS} from "../../lib/interfaces/analysis.interface";
+import {IAnalysis, RESULT, STATUS} from "../../lib/interfaces/analysis.interface";
 
 import intents from "../../lib/data/intents.json";
-import ResolutionRate from "../../components/analytics/charts/resolutionRate";
-import {calculateResultPercentages} from "../../lib/helpers";
+import {calculateResolutionRate} from "../../lib/helpers";
+import ExcelExportButton from "../../components/analytics/excelExportButton";
+import ChartsDeck from "../../components/analytics/charts/chartsDeck";
 
 const Analytics = () => {
     const [rawDataIntent, setRawDataIntent] = useState<any>([]);
     const [rawDataConversations, setRawDataConversations] = useState<any>([]);
+    const [filteredConversations, setFilteredConversations] = useState<IAnalysis[] | null>(null);
 
     const updateData = (indexKey: number, key: string, newValue: any) => {
         const updatedData = [...rawDataConversations];
@@ -27,7 +30,7 @@ const Analytics = () => {
         if (itemIndex !== -1) {
             updatedData[itemIndex][key] = newValue;
         }
-        if(!updatedData[itemIndex].status){
+        if (!updatedData[itemIndex].status) {
             updatedData[itemIndex].status = STATUS.IN_PROGRESS
         }
         if (updatedData[itemIndex].result === RESULT.SATISFACTORY) {
@@ -41,7 +44,7 @@ const Analytics = () => {
         const intentFound = intents.find(item => item.intent === updatedData[itemIndex].user_intent);
         updatedData[itemIndex].associated_skill = intentFound ? intentFound.skill : null;
         setRawDataConversations(updatedData);
-        console.log(calculateResultPercentages(updatedData));
+        console.log(calculateResolutionRate(updatedData));
     };
 
 
@@ -136,22 +139,26 @@ const Analytics = () => {
                 <Breadcrumb.Item>Analytics</Breadcrumb.Item>
             </Breadcrumb>
             <Divider/>
-            <Space>
-                <Upload
-                    beforeUpload={beforeUpload}
-                    showUploadList={false}
-                    accept=".json"
-                >
-                    <Button icon={<UploadOutlined/>}>Upload JSON</Button>
-                </Upload>
-                <Button
-                    icon={<DownloadOutlined/>}
-                    onClick={downloadJsonFile}
-                >
-                    Download JSON
-                </Button>
-
-            </Space>
+            <Row>
+                <Col span={8}>
+                    <Space>
+                        <Upload
+                            beforeUpload={beforeUpload}
+                            showUploadList={false}
+                            accept=".json"
+                        >
+                            <Button icon={<UploadOutlined/>}/>
+                        </Upload>
+                        <Button
+                            icon={<DownloadOutlined/>}
+                            onClick={downloadJsonFile}
+                        />
+                    </Space>
+                </Col>
+                <Col span={8} offset={8} >
+                    <ExcelExportButton data={filteredConversations}/>
+                </Col>
+            </Row>
 
             <Divider dashed/>
             <Tabs
@@ -160,7 +167,11 @@ const Analytics = () => {
                     {
                         key: "conversation_design",
                         label: "",
-                        children: <ConversationDesign analysis={rawDataConversations} updateHandler={updateData}/>,
+                        children: <ConversationDesign
+                            analysis={rawDataConversations}
+                            updateHandler={updateData}
+                            updateFilteredConversation={setFilteredConversations}
+                        />,
                         icon: <AntDesignOutlined/>,
                     },
                     {
@@ -174,8 +185,7 @@ const Analytics = () => {
                     {
                         key: "charts",
                         label: "",
-                        // @ts-ignore
-                        children: <ResolutionRate resultPercentages={calculateResultPercentages(rawDataConversations)}/>,
+                        children: <ChartsDeck data={rawDataConversations}/>,
                         icon: <DotChartOutlined/>,
                     },
                 ]}

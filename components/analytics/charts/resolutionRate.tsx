@@ -1,7 +1,6 @@
 import React from 'react';
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 import {Doughnut} from 'react-chartjs-2';
-import {Breadcrumb} from "antd";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -12,7 +11,7 @@ type propType = {
         "Needs Improvement": number,
         Incorrect: number,
         "ToDo": number
-    }
+    } | any
 }
 
 const ResolutionRate = ({resultPercentages}: propType) => {
@@ -52,14 +51,13 @@ const ResolutionRate = ({resultPercentages}: propType) => {
     };
 
     return (
-        <div>
-            <Breadcrumb style={{margin: '16px 0'}}>
-                <Breadcrumb.Item>Analysis</Breadcrumb.Item>
-                <Breadcrumb.Item>Resolution Rate</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{height: "90vh"}}>
-                <Doughnut data={data}/>
-            </div>
+        <div style={{
+            height: "90vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+        }}>
+            <Doughnut data={data} style={{}}/>
         </div>
     );
 };

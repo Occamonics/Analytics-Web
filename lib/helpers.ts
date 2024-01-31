@@ -1,4 +1,5 @@
 import {IAnalysis} from "./interfaces/analysis.interface";
+import {IIntentResolution} from "../components/analytics/charts/topIntents";
 
 export const  formatUnixTimestamp = (unixTimestamp:number):string => {
     // Create Date object from Unix timestamp
@@ -16,7 +17,7 @@ export const  formatUnixTimestamp = (unixTimestamp:number):string => {
 }
 
 
-export function calculateResultPercentages(data: IAnalysis[]) {
+export function calculateResolutionRate(data: IAnalysis[]) {
     let resultCounts: { [key: string]: number } = {
         Incorrect: 0,
         Satisfactory: 0,
@@ -41,4 +42,28 @@ export function calculateResultPercentages(data: IAnalysis[]) {
     };
 
     return resultPercentages;
+}
+
+
+export const getResolutionByIntent = (data: IAnalysis[]) => {
+    const intents : string[] = [];
+    data.forEach(item => {
+        const index = intents.findIndex(intent => item.INTENT === intent);
+        if(index === -1)
+            intents.push(item.INTENT);
+    })
+
+    const stats: IIntentResolution[] = [];
+    intents.forEach(intent => {
+        const sum = data.filter(item => item.INTENT === intent).length;
+        const satisfactory = data.filter(item => item.INTENT === intent && item.result === "Satisfactory").length;
+        const unsatisfactory = data.filter(item => item.INTENT === intent && item.result !== "Satisfactory").length;
+        stats.push({
+            intent,
+            sum,
+            satisfactory,
+            unsatisfactory
+        })
+    })
+    return stats;
 }
