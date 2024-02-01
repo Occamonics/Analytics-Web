@@ -1,7 +1,8 @@
 export enum STATUS {
     COMPLETED = "Completed",
     IN_PROGRESS = "In Progress",
-    WONT_FIX = "Won't Fix"
+    WONT_FIX = "Won't Fix",
+    TO_DISCUSS = "To Discuss"
 }
 
 export enum RESULT {
