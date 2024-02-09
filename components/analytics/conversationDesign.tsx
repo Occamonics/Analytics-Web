@@ -128,7 +128,13 @@ const ConversationDesign = ({analysis, updateHandler, updateFilteredConversation
                 }}
                 disabled={record.result == RESULT.SATISFACTORY}
                 value={value}
-            />
+            />,
+            filters: Object.entries(ISSUE_TYPE).map(([key, value]) => ({
+                text: value,
+                value: value,
+            })),
+            filterSearch: true,
+            onFilter: (value, record) => record.issue_type && record.issue_type.includes(value as string) || false,
         },
         {
             title: "User Intent",

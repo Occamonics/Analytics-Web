@@ -4,6 +4,7 @@ import ResolutionRate from "./resolutionRate";
 import {IAnalysis} from "../../../lib/interfaces/analysis.interface";
 import {calculateResolutionRate, getResolutionByIntent} from "../../../lib/helpers";
 import TopIntent from "./topIntents";
+import {UserSatisfaction} from "./userSatisfaction";
 
 type propType = {
     data: IAnalysis[];
@@ -23,6 +24,11 @@ const ChartsDeck = ({data} : propType) => {
                         key: "2",
                         children: <TopIntent intentsResolution={getResolutionByIntent(data)}/>
                     },
+                    {
+                        label: "Return Visits",
+                        key: "3",
+                        children: <UserSatisfaction/>
+                    }
                 ]
             }
         />

@@ -22,14 +22,14 @@ export function calculateResolutionRate(data: IAnalysis[]) {
         Incorrect: 0,
         Satisfactory: 0,
         "Needs Improvement": 0,
-        "ToDo": 0
+        // "ToDo": 0
     };
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].result) {
             resultCounts[data[i].result]++;
-        } else {
-            resultCounts["ToDo"]++;
+        // } else {
+        //     resultCounts["ToDo"]++;
         }
     }
 
@@ -38,7 +38,7 @@ export function calculateResolutionRate(data: IAnalysis[]) {
         Incorrect: (resultCounts["Incorrect"] / totalResults) * 100,
         Satisfactory: (resultCounts["Satisfactory"] / totalResults) * 100,
         "Needs Improvement": (resultCounts["Needs Improvement"] / totalResults) * 100,
-        ToDo: (resultCounts["ToDo"] / totalResults) * 100
+        // ToDo: (resultCounts["ToDo"] / totalResults) * 100
     };
 
     return resultPercentages;
@@ -48,16 +48,18 @@ export function calculateResolutionRate(data: IAnalysis[]) {
 export const getResolutionByIntent = (data: IAnalysis[]) => {
     const intents : string[] = [];
     data.forEach(item => {
-        const index = intents.findIndex(intent => item.INTENT === intent);
+        const index = intents.findIndex(intent => item.user_intent === intent);
+        if(!item.user_intent)
+            return
         if(index === -1)
-            intents.push(item.INTENT);
+            intents.push(item.user_intent);
     })
 
     const stats: IIntentResolution[] = [];
     intents.forEach(intent => {
-        const sum = data.filter(item => item.INTENT === intent).length;
-        const satisfactory = data.filter(item => item.INTENT === intent && item.result === "Satisfactory").length;
-        const unsatisfactory = data.filter(item => item.INTENT === intent && item.result !== "Satisfactory").length;
+        const sum = data.filter(item => item.user_intent === intent).length;
+        const satisfactory = data.filter(item => item.user_intent === intent && item.result === "Satisfactory").length;
+        const unsatisfactory = data.filter(item => item.user_intent === intent && item.result !== "Satisfactory").length;
         stats.push({
             intent,
             sum,
@@ -66,4 +68,8 @@ export const getResolutionByIntent = (data: IAnalysis[]) => {
         })
     })
     return stats;
+}
+
+export const getUserSatisfaction = (data: IAnalysis[]) => {
+
 }

@@ -5,7 +5,7 @@ import {
     AntDesignOutlined,
     DotChartOutlined,
     DownloadOutlined,
-    FileSearchOutlined,
+    FileSearchOutlined, PlusOutlined,
     UploadOutlined
 } from "@ant-design/icons";
 import References from "../../components/analytics/references";
@@ -98,7 +98,9 @@ const Analytics = () => {
         reader.onload = (e: any) => {
             try {
                 const parsedData = JSON.parse(e.target.result);
-                setRawDataConversations(parsedData.map((e: any, i: any) => {
+                const data = parsedData.concat(rawDataConversations)
+                console.log(data);
+                setRawDataConversations(data.map((e: any, i: any) => {
                     return {...e, key: i}
                 }));
                 message.success('File uploaded successfully!');
@@ -147,7 +149,7 @@ const Analytics = () => {
                             showUploadList={false}
                             accept=".json"
                         >
-                            <Button icon={<UploadOutlined/>}/>
+                            <Button icon={<PlusOutlined />}/>
                         </Upload>
                         <Button
                             icon={<DownloadOutlined/>}

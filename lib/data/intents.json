@@ -1,5 +1,9 @@
 [
   {
+    "skill": null,
+    "intent": null
+  },
+  {
     "skill": "FAQsDemo",
     "intent": "faq.ans.clearReview.access"
   },
