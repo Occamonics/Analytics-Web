@@ -52,5 +52,6 @@ export interface IAnalysis {
 
     conversation: IConversation[];
 
+    country : string;
     index: number;
 }

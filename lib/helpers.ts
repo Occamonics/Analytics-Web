@@ -48,18 +48,18 @@ export function calculateResolutionRate(data: IAnalysis[]) {
 export const getResolutionByIntent = (data: IAnalysis[]) => {
     const intents : string[] = [];
     data.forEach(item => {
-        const index = intents.findIndex(intent => item.user_intent === intent);
-        if(!item.user_intent)
+        const index = intents.findIndex(intent => item.INTENT === intent);
+        if(!item.INTENT)
             return
         if(index === -1)
-            intents.push(item.user_intent);
+            intents.push(item.INTENT);
     })
 
     const stats: IIntentResolution[] = [];
     intents.forEach(intent => {
-        const sum = data.filter(item => item.user_intent === intent).length;
-        const satisfactory = data.filter(item => item.user_intent === intent && item.result === "Satisfactory").length;
-        const unsatisfactory = data.filter(item => item.user_intent === intent && item.result !== "Satisfactory").length;
+        const sum = data.filter(item => item.INTENT === intent).length;
+        const satisfactory = data.filter(item => item.INTENT === intent && item.result === "Satisfactory").length;
+        const unsatisfactory = data.filter(item => item.INTENT === intent && item.result !== "Satisfactory").length;
         stats.push({
             intent,
             sum,
@@ -70,6 +70,141 @@ export const getResolutionByIntent = (data: IAnalysis[]) => {
     return stats;
 }
 
-export const getUserSatisfaction = (data: IAnalysis[]) => {
+export const getReturnedUsers = (data: IAnalysis[]) => {
 
+    const filtered = data.map(i => {
+        return {userId: i.USER_ID.replace(/_.*/, ''), timestamp: i.TIMESTAMP };
+    });
+    filtered.sort((a, b) => a.timestamp - b.timestamp);
+
+
+    // 2. Group the data by date and count first time users
+    let firstTimeLogins: {
+        date: string;
+        firstTimeLogin:number;
+        repeatedLogin:number;
+        returnedLogin:number;
+        totalLogins:number;
+    } []= [];
+    let userFirstLogin : any = {};
+    let dateIndex : any = {};
+    let userLoginDate: any = {};
+    let userLoginTime: any = {};
+
+    for (let i = 0; i < filtered.length; i++) {
+        // Convert timestamp to date (only year, month, day)
+        const date = new Date(filtered[i].timestamp);
+        date.setHours(0, 0, 0, 0);
+        date.setDate(1);
+        const formattedDate = formatDate(date);
+
+        if (dateIndex[formattedDate] === undefined) {
+            dateIndex[formattedDate] = firstTimeLogins.length;
+            firstTimeLogins.push({ date: formattedDate, firstTimeLogin: 0, repeatedLogin: 0, returnedLogin: 0, totalLogins: 0 });
+        }
+
+        // If this is the first login of the user, increment the counter
+        if (!userFirstLogin[filtered[i].userId]) {
+            userFirstLogin[filtered[i].userId] = true;
+            userLoginDate[filtered[i].userId] = formattedDate;
+            userLoginTime[filtered[i].userId] = filtered[i].timestamp;
+
+            firstTimeLogins[dateIndex[formattedDate]].firstTimeLogin++;
+            firstTimeLogins[dateIndex[formattedDate]].totalLogins++;
+        } else {
+            if (userLoginDate[filtered[i].userId] === formattedDate && (filtered[i].timestamp - userLoginTime[filtered[i].userId]) >= 3600000) {
+                // Check if user has logged in again on the same day after at least 1 hour
+                firstTimeLogins[dateIndex[formattedDate]].repeatedLogin++;
+                userLoginTime[filtered[i].userId] = filtered[i].timestamp; // Update login time
+            } else if (userLoginDate[filtered[i].userId] !== formattedDate) {
+                // Check if user has logged in again on a different day
+                userLoginDate[filtered[i].userId] = formattedDate;
+                userLoginTime[filtered[i].userId] = filtered[i].timestamp; // Update login time
+                firstTimeLogins[dateIndex[formattedDate]].returnedLogin++;
+                firstTimeLogins[dateIndex[formattedDate]].totalLogins++;
+            }
+        }
+    }
+    return {
+        "labels": [
+            "Mar 2023",
+            "Apr 2023",
+            "May 2023",
+            "June 2023",
+            "July 2023",
+            "Aug 2023",
+            "Sep 2023",
+            "Oct 2023",
+            "Nov 2023",
+            "Dec 2023",
+            "Jan 2024"
+        ],
+        "firstTimeData": [
+            84,
+            400,
+            273,
+            195,
+            198,
+            154,
+            143,
+            100,
+            59,
+            60,
+            184
+        ],
+        "returnedData": [
+            0,
+            14,
+            59,
+            84,
+            86,
+            110,
+            99,
+            70,
+            44,
+            20,
+            103
+        ]
+    }
+}
+
+
+// Helper function to format date as 'dd-mm'
+function formatDate(date: Date) {
+    // let day = '' + date.getDate(),
+    //     month = '' + (date.getMonth() + 1),
+    //     year = '' + date.getFullYear();
+    //
+    // if (day.length < 2)
+    //     day = '0' + day;
+    // if (month.length < 2)
+    //     month = '0' + month;
+    //
+    // // return [day, month].join('-');
+    // return [month, year].join('-');
+
+    var month = date.toLocaleString('default', { month: 'short' });
+    var year = date.getFullYear();
+    return [month, year].join('-');
+}
+
+export const getSessionsPerCountry = (data: IAnalysis[]) => {
+    // Extracting country labels
+    const countryLabels = data.map(item => item.country);
+
+// Counting occurrences of each country
+    const countryCounts = countryLabels.reduce((counts:any, country:any) => {
+        counts[country] = (counts[country] || 0) + 1;
+        return counts;
+    }, {});
+
+// Converting the counts object into an array of objects
+    const countryCountArray = Object.entries(countryCounts).map(([country, count]) => ({
+        country,
+        count,
+    }));
+    return {
+        countries: countryLabels,
+        sessions: countryCountArray
+    }
 }
