@@ -25,7 +25,7 @@ const handleExportClick = (data: IAnalysis[] | null) => {
         return {...item, dialogue, TS}
     })
 
-    const whitelist = ["key", "USER_ID", "USER_UTTERANCE", "INTENT", "TS", "BOT_NAME", "CHANNEL_SESSION_ID", "result", "issue_type", "notes", "dialogue", "status"];
+    const whitelist = ["key", "USER_ID", "USER_UTTERANCE", "INTENT", "TS", "BOT_NAME", "CHANNEL_SESSION_ID", "result", "issue_type", "notes", "dialogue", "status","country"];
     const filtered = _.map(refactored, (obj:any) => _.pick(obj, whitelist));
     const worksheet = XLSX.utils.json_to_sheet(filtered);
     for (let rowIndex = 2; rowIndex <= filtered.length; rowIndex++) {

@@ -95,7 +95,7 @@ export const getReturnedUsers = (data: IAnalysis[]) => {
         // Convert timestamp to date (only year, month, day)
         const date = new Date(filtered[i].timestamp);
         date.setHours(0, 0, 0, 0);
-        date.setDate(1);
+        // date.setDate(1);
         const formattedDate = formatDate(date);
 
         if (dateIndex[formattedDate] === undefined) {
@@ -126,66 +126,21 @@ export const getReturnedUsers = (data: IAnalysis[]) => {
         }
     }
     return {
-        "labels": [
-            "Mar 2023",
-            "Apr 2023",
-            "May 2023",
-            "June 2023",
-            "July 2023",
-            "Aug 2023",
-            "Sep 2023",
-            "Oct 2023",
-            "Nov 2023",
-            "Dec 2023",
-            "Jan 2024"
-        ],
-        "firstTimeData": [
-            84,
-            400,
-            273,
-            195,
-            198,
-            154,
-            143,
-            100,
-            59,
-            60,
-            184
-        ],
-        "returnedData": [
-            0,
-            14,
-            59,
-            84,
-            86,
-            110,
-            99,
-            70,
-            44,
-            20,
-            103
-        ]
+        "labels": firstTimeLogins.map(i => i.date),
+        "firstTimeData": firstTimeLogins.map(i => i.firstTimeLogin),
+        "returnedData": firstTimeLogins.map(i => i.returnedLogin)
     }
 }
 
 
 // Helper function to format date as 'dd-mm'
 function formatDate(date: Date) {
-    // let day = '' + date.getDate(),
-    //     month = '' + (date.getMonth() + 1),
-    //     year = '' + date.getFullYear();
-    //
-    // if (day.length < 2)
-    //     day = '0' + day;
-    // if (month.length < 2)
-    //     month = '0' + month;
-    //
-    // // return [day, month].join('-');
-    // return [month, year].join('-');
+    let day = '' + date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
 
-    var month = date.toLocaleString('default', { month: 'short' });
-    var year = date.getFullYear();
-    return [month, year].join('-');
+    return [day, month].join(' ');
+    // return [month, year].join(' ');
 }
 
 export const getSessionsPerCountry = (data: IAnalysis[]) => {

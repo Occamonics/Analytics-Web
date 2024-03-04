@@ -5,8 +5,8 @@ import {TableRowSelection} from "antd/es/table/interface";
 
 
 interface DataType {
-    intent: string;
-    skill: string;
+    intent: string | any;
+    skill: string | any;
 }
 
 const columns: ColumnsType<DataType> = [

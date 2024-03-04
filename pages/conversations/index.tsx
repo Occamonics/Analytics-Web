@@ -60,8 +60,8 @@ const Analytics = () => {
         const fetchConversations = async () => {
             const {success, data, count} = await getAllConversations();
             if (success) {
-                setRawDataConversations(data.map((e: any, index: number) => {
-                    return {...e, index}
+                setRawDataConversations(data.map((e: any, i: number) => {
+                    return {...e, key: i}
                 }))
             } else {
                 setRawDataConversations([]);
@@ -69,7 +69,6 @@ const Analytics = () => {
         }
         // fetchIntents();
         // fetchConversations();
-
     }, []);
 
     const handleRouteChange = (url: any, {shallow}: any) => {

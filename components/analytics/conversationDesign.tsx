@@ -32,7 +32,21 @@ const ConversationDesign = ({analysis, updateHandler, updateFilteredConversation
             onFilter: (value, record) => record.key == value,
             // fixed: true
         },
-
+        {
+            // country
+            title: "Country",
+            key: "country",
+            dataIndex: "country",
+            sorter: (a, b) => a.country.localeCompare(b.country),
+            filters: analysis.filter((value, index, self) =>
+                self.findIndex(item => item.country === value.country) === index
+            ).map(e => {
+                return {text: e.country, value: e.country}
+            }),
+            filterSearch: true,
+            onFilter: (value, record) => record.country.includes(value as string),
+            width:100
+        },
         {
             title: "User ID",
             key: "USER_ID",
